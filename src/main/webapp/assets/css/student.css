@@ -1,0 +1,409 @@
+/* ==========================================================================
+   Student Portal & Adaptive Device Stylesheet
+   Campus Notice Board & Digital Registry
+   ========================================================================== */
+
+/* Full viewport container on mobile using 100dvh */
+.student-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-paper);
+  padding-bottom: 5rem; /* Room for bottom nav on mobile */
+}
+
+@media (min-width: 1025px) {
+  .student-shell {
+    padding-bottom: 2rem;
+  }
+}
+
+/* ==========================================================================
+   Mobile Bottom Navigation Bar
+   ========================================================================== */
+.mobile-bottom-nav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: var(--color-card);
+  border-top: var(--border-thick);
+  box-shadow: 0 -4px 12px rgba(26, 25, 22, 0.12);
+  z-index: 999;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--color-ink-muted);
+  min-width: 54px;
+  min-height: 48px; /* Touch target >= 48px */
+  padding: 4px;
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.bottom-nav-item.active {
+  color: var(--color-board-green);
+  font-weight: 800;
+}
+
+.bottom-nav-item .nav-icon {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 2px;
+}
+
+/* Center "+ New" Stamp Button */
+.bottom-nav-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-signal-red);
+  color: #fff !important;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-hard);
+  transform: translateY(-12px);
+  min-width: 48px;
+  min-height: 48px;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.bottom-nav-action-btn:active {
+  transform: translateY(-8px) scale(0.96);
+  box-shadow: 2px 2px 0 var(--color-ink);
+}
+
+/* Notification badge */
+.badge-count {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  background: var(--color-signal-red);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  border-radius: 10px;
+  padding: 1px 5px;
+  border: 1px solid var(--color-ink);
+}
+
+/* Hide bottom nav on desktop/laptop */
+@media (min-width: 1025px) {
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Desktop Top Navigation Bar
+   ========================================================================== */
+.student-desktop-header {
+  display: none;
+  background: var(--color-card);
+  border-bottom: var(--border-thick);
+  box-shadow: var(--shadow-hard);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+@media (min-width: 1025px) {
+  .student-desktop-header {
+    display: block;
+  }
+}
+
+.student-nav-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.student-links {
+  display: flex;
+  list-style: none;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.student-link {
+  text-decoration: none;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+
+.student-link:hover, .student-link.active {
+  background: var(--color-paper);
+  border: var(--border-thin);
+  box-shadow: 2px 2px 0 var(--color-ink);
+}
+
+/* ==========================================================================
+   Student Cards & Notice Slips
+   ========================================================================== */
+.slip-container {
+  max-width: 1200px;
+  margin: 1.25rem auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.pinned-slip {
+  background: var(--color-card);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-hard);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.tape-pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 80px;
+  height: 20px;
+  background: rgba(244, 196, 48, 0.75);
+  border: 1px dashed rgba(26, 25, 22, 0.4);
+}
+
+/* ==========================================================================
+   Mobile Step-by-Step Flow for Complaints
+   ========================================================================== */
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 0.5rem;
+  background: var(--color-paper-light);
+  border: var(--border-thin);
+}
+
+.step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: var(--border-thin);
+  background: var(--color-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
+}
+
+.step-dot.active {
+  background: var(--color-board-green);
+  color: white;
+  border-color: var(--color-ink);
+  box-shadow: 2px 2px 0 var(--color-ink);
+}
+
+.step-dot.completed {
+  background: var(--color-highway-yellow);
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: var(--color-ink-faint);
+  margin: 0 6px;
+}
+
+.step-panel {
+  display: none;
+}
+
+.step-panel.active {
+  display: block;
+}
+
+/* Input sizes on mobile >= 16px to prevent iOS auto-zoom */
+.input-mobile {
+  font-size: 16px !important;
+  min-height: 48px;
+}
+
+/* ==========================================================================
+   Desktop Two-Column Form with Live Receipt Preview (>= 1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .desktop-two-col {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .desktop-two-col .step-panel {
+    display: block !important;
+    margin-bottom: 1.5rem;
+  }
+
+  .desktop-two-col .step-indicator,
+  .desktop-two-col .mobile-step-nav {
+    display: none !important;
+  }
+
+  .desktop-two-col .desktop-submit-row {
+    display: block !important;
+  }
+}
+
+/* ==========================================================================
+   Master-Detail Grid on Desktop (>= 1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .master-detail-shell {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .complaints-scroll-column {
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+
+  .complaint-detail-column {
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+  }
+}
+
+/* ==========================================================================
+   Drag & Drop Zone and Camera File Inputs
+   ========================================================================== */
+.file-drop-zone {
+  border: 2px dashed var(--color-ink-muted);
+  background: var(--color-paper-light);
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.file-drop-zone.dragover {
+  background: var(--color-highway-yellow-light);
+  border-color: var(--color-ink);
+}
+
+.camera-attach-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  min-height: 48px;
+  background: var(--color-card);
+  border: var(--border-thin);
+  box-shadow: 2px 2px 0 var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.camera-attach-btn:active {
+  box-shadow: 1px 1px 0 var(--color-ink);
+  transform: translate(1px, 1px);
+}
+
+.image-preview-box {
+  margin-top: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.image-preview-box img {
+  max-width: 100%;
+  max-height: 240px;
+  border: var(--border-thin);
+  box-shadow: var(--shadow-card);
+}
+
+.remove-img-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--color-signal-red);
+  color: white;
+  border: var(--border-thin);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Full-screen Notice for Admin on Mobile
+   ========================================================================== */
+.admin-mobile-notice-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 1.5rem;
+  background-color: #2D1810; /* Dark office desk wood */
+}
+
+.admin-mobile-notice-card {
+  background: var(--color-card);
+  border: 3px solid var(--color-ink);
+  box-shadow: 8px 8px 0 var(--color-ink);
+  padding: 2.5rem 1.75rem;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.admin-mobile-stamp {
+  display: inline-block;
+  border: 3px solid var(--color-signal-red);
+  color: var(--color-signal-red);
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  padding: 0.35rem 1.2rem;
+  transform: rotate(-3deg);
+  margin-bottom: 1.25rem;
+}

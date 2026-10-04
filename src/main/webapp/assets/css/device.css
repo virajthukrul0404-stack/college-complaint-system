@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Device Capability & Breakpoints Adaptive Stylesheet
+   ========================================================================== */
+
+/* Breakpoints:
+   Phone: <= 640px
+   Tablet: 641px - 1024px
+   Desktop: >= 1025px
+*/
+
+/* Mobile touch enhancements */
+@media (pointer: coarse), (hover: none) {
+  button, input, select, textarea, .btn, .nav-link, .folder-tab-link {
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+
+  /* Remove hover transforms that stick on touch devices */
+  .btn:hover, .counter-slip:hover, .pinned-card:hover {
+    transform: none !important;
+  }
+}
+
+/* Enforce font size >= 16px on mobile form inputs to avoid iOS viewport zooming */
+@media (max-width: 640px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .site-header {
+    padding: 0.5rem 0;
+  }
+
+  .brand-title .subtitle {
+    display: none;
+  }
+
+  /* Prevent horizontal scrolling */
+  body, html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+}
+
+/* Tablet refinements */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .slips-stack {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Admin laptop-only viewport enforcement */
+.admin-laptop-notice-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(45, 24, 16, 0.96);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+@media (max-width: 1023px) {
+  .admin-desktop-only-content {
+    display: none !important;
+  }
+
+  .admin-laptop-notice-overlay {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .admin-laptop-notice-overlay {
+    display: none !important;
+  }
+
+  .admin-desktop-only-content {
+    display: block !important;
+  }
+}

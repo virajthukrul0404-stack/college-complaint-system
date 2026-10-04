@@ -1,0 +1,53 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<header class="student-desktop-header">
+  <div class="student-nav-grid">
+    <a href="${pageContext.request.contextPath}/student/home" class="brand-stamp" style="text-decoration: none;">
+      <div class="brand-seal" style="background: var(--color-board-green);">ST</div>
+      <div class="brand-title">
+        <span class="title">Campus Grievance Desk</span>
+        <span class="subtitle">Student Portal • <c:out value="${sessionScope.studentUser.rollNo}"/></span>
+      </div>
+    </a>
+    <ul class="student-links">
+      <li>
+        <a href="${pageContext.request.contextPath}/student/home" class="student-link ${pageContext.request.requestURI.endsWith('/home') ? 'active' : ''}">
+          📋 Home Desk
+        </a>
+      </li>
+      <li>
+        <a href="${pageContext.request.contextPath}/student/complaints" class="student-link ${pageContext.request.requestURI.contains('/complaints') ? 'active' : ''}">
+          📑 My Complaints
+        </a>
+      </li>
+      <li>
+        <a href="${pageContext.request.contextPath}/student/complaint/new" class="btn btn-primary btn-sm">
+          + New Complaint <kbd style="background: rgba(0,0,0,0.2); padding: 1px 4px; border-radius: 2px; font-size: 0.7rem;">N</kbd>
+        </a>
+      </li>
+      <li>
+        <a href="${pageContext.request.contextPath}/student/feedback" class="student-link ${pageContext.request.requestURI.contains('/feedback') ? 'active' : ''}">
+          ⭐ Feedback
+        </a>
+      </li>
+      <li>
+        <a href="${pageContext.request.contextPath}/student/notifications" class="student-link ${pageContext.request.requestURI.contains('/notifications') ? 'active' : ''}" style="position: relative;">
+          🔔 Updates
+          <c:if test="${not empty unreadNotificationsCount and unreadNotificationsCount > 0}">
+            <span class="badge-count" style="position: static; margin-left: 4px;"><c:out value="${unreadNotificationsCount}"/></span>
+          </c:if>
+        </a>
+      </li>
+      <li>
+        <a href="${pageContext.request.contextPath}/student/profile" class="student-link ${pageContext.request.requestURI.contains('/profile') ? 'active' : ''}">
+          👤 <c:out value="${sessionScope.studentUser.fullName}"/>
+        </a>
+      </li>
+      <li>
+        <a href="${pageContext.request.contextPath}/student/logout" class="btn btn-secondary btn-sm" style="color: var(--color-signal-red);">
+          Exit
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>

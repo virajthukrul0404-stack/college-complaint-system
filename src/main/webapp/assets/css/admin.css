@@ -1,0 +1,301 @@
+/* ==========================================================================
+   Admin Desk Styles - Manila Folder & Register Ledger Aesthetic
+   ========================================================================== */
+
+/* 1. ADMIN LAYOUT & MANILA FOLDER TABS */
+.admin-shell {
+  display: flex;
+  min-height: calc(100vh - 65px);
+  background-color: #ECE5D5;
+}
+
+.admin-sidebar {
+  width: 250px;
+  background-color: #E2DAC8;
+  border-right: var(--border-thick);
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.folder-tabs {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.folder-tab-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  text-decoration: none;
+  border-left: 4px solid transparent;
+  transition: all var(--transition-quick);
+  position: relative;
+}
+
+.folder-tab-link:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-left-color: var(--color-ink-muted);
+}
+
+.folder-tab-link.active {
+  background-color: var(--color-card);
+  border-left-color: var(--color-signal-red);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+  font-weight: 800;
+}
+
+.folder-tab-link .badge {
+  margin-left: auto;
+  background-color: var(--color-signal-red);
+  color: #FFF;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+}
+
+.desk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed var(--color-ink-faint);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.desk-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+}
+
+/* 2. LEDGER METRIC CARDS */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.metric-card {
+  background-color: var(--color-card);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-hard);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-sm);
+  position: relative;
+}
+
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.05em;
+}
+
+.metric-val {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-ink);
+  line-height: 1.1;
+  margin-top: 0.25rem;
+}
+
+.metric-urgent {
+  border-color: var(--color-signal-red);
+}
+.metric-urgent .metric-val {
+  color: var(--color-signal-red);
+}
+
+/* 3. REGISTER LEDGER TABLE */
+.ledger-wrapper {
+  background-color: #FFFDF9;
+  border: var(--border-thick);
+  box-shadow: 5px 6px 0 var(--color-ink);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  position: relative;
+}
+
+/* Red notebook margin line */
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.ledger-table th {
+  background-color: #F1ECE0;
+  border-bottom: 2px solid var(--color-ink);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.ledger-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(26, 25, 22, 0.12);
+  vertical-align: middle;
+}
+
+.ledger-table tbody tr:hover {
+  background-color: rgba(244, 196, 48, 0.08);
+}
+
+.col-margin {
+  width: 12px;
+  border-right: 2px solid var(--color-margin-red) !important;
+  padding: 0 !important;
+}
+
+.urgent-flag {
+  display: inline-block;
+  background-color: var(--color-signal-red);
+  color: #FFF;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  margin-left: 0.4rem;
+}
+
+/* Yellow Highlighter wipe animation for live new arrivals */
+@keyframes highlightWipe {
+  0% {
+    background-color: var(--color-highway-yellow);
+    transform: translateY(-8px);
+  }
+  20% {
+    background-color: rgba(244, 196, 48, 0.85);
+    transform: translateY(0);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.row-highlight-new {
+  animation: highlightWipe 3.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 4. FILTERS & SEARCH BAR */
+.filter-bar {
+  background-color: var(--color-card);
+  border: var(--border-thick);
+  box-shadow: 3px 3px 0 var(--color-ink);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+/* 5. PAGINATION */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.page-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.page-btn {
+  padding: 0.4rem 0.75rem;
+  border: var(--border-thick);
+  background: var(--color-card);
+  box-shadow: 2px 2px 0 var(--color-ink);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-ink);
+  border-radius: var(--radius-sm);
+}
+
+.page-btn.active {
+  background: var(--color-signal-red);
+  color: #FFF;
+  box-shadow: 0 0 0 var(--color-ink);
+  transform: translate(2px, 2px);
+}
+
+/* Detail View Desk Cards */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 2rem;
+}
+
+.detail-pane {
+  background: var(--color-card);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-hard);
+  padding: 2rem;
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 900px) {
+  .admin-shell {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: var(--border-thick);
+  }
+  .folder-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0 1rem;
+  }
+  .folder-tab-link {
+    border-left: none;
+    border-bottom: 4px solid transparent;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+  }
+  .folder-tab-link.active {
+    border-bottom-color: var(--color-signal-red);
+    border-left-color: transparent;
+  }
+  .admin-main {
+    padding: 1.5rem 1rem;
+  }
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

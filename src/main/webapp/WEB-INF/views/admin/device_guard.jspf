@@ -1,0 +1,20 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!-- Client-side Fallback Overlay for screens < 1024px -->
+<div class="admin-laptop-notice-overlay">
+  <div class="admin-mobile-notice-card">
+    <div class="tape-pin" style="width: 100px;"></div>
+    <div class="admin-mobile-stamp">
+      STAFF DESK IS FOR LAPTOPS
+    </div>
+    <h2 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.75rem; color: var(--color-ink);">
+      Administrative Ledger Restricted
+    </h2>
+    <p style="color: var(--color-ink-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem;">
+      The campus grievance ledger, multi-column triage desk, and audit reports require a laptop or desktop workstation (minimum width 1024px). Please widen your browser window.
+    </p>
+    <a href="${pageContext.request.contextPath}/home" class="btn btn-primary" style="text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;">
+      Return to Student Portal ➔
+    </a>
+  </div>
+</div>

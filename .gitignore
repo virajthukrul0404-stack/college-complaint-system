@@ -1,0 +1,10 @@
+target/
+.idea/
+*.iml
+uploads/
+.env
+*.log
+config.local.properties
+db/*.mv.db
+db/*.trace.db
+.system_generated/

@@ -1,0 +1,424 @@
+/* ==========================================================================
+   Components - Physical Paper Slips, Rubber Stamps & Tactile Controls
+   ========================================================================== */
+
+/* 1. BUTTONS (Physical Stamp / Sticker Buttons) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-sm);
+  border: var(--border-thick);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-quick), box-shadow var(--transition-quick), background-color var(--transition-quick);
+  user-select: none;
+}
+
+/* Primary Button (Signal Orange-Red Stamp) */
+.btn-primary {
+  background-color: var(--color-signal-red);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-hard);
+}
+
+.btn-primary:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-hard-hover);
+  color: #FFFFFF;
+}
+
+.btn-primary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-ink);
+}
+
+/* Secondary Button (Outlined Paper) */
+.btn-secondary {
+  background-color: var(--color-paper-light);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-hard);
+}
+
+.btn-secondary:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-hard-hover);
+  color: var(--color-ink);
+}
+
+.btn-secondary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-ink);
+}
+
+/* Green Action Button (Resolved / Success) */
+.btn-success {
+  background-color: var(--color-board-green);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-hard);
+}
+
+.btn-success:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-hard-hover);
+}
+
+.btn-success:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-ink);
+}
+
+/* Danger Button (Delete / Reject) */
+.btn-danger {
+  background-color: #C92A2A;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-hard);
+}
+
+.btn-danger:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-hard-hover);
+}
+
+.btn-danger:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-ink);
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* 2. RUBBER STAMPS */
+.stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.85rem;
+  border: 3px double currentColor;
+  border-radius: 4px;
+  position: relative;
+  text-align: center;
+  line-height: 1.1;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 80%, rgba(0,0,0,0.7) 100%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 80%, rgba(0,0,0,0.7) 100%);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Stamp Variations */
+.stamp-submitted {
+  color: var(--color-pen-blue);
+  border-color: var(--color-pen-blue);
+  transform: rotate(-2deg);
+}
+
+.stamp-under-review {
+  color: #B25E00;
+  border-color: #B25E00;
+  background-color: rgba(244, 196, 48, 0.15);
+  transform: rotate(1.5deg);
+}
+
+.stamp-in-progress {
+  color: #C05621;
+  border-color: #C05621;
+  background-color: rgba(229, 72, 27, 0.08);
+  transform: rotate(-1.5deg);
+}
+
+.stamp-resolved {
+  color: var(--color-board-green);
+  border-color: var(--color-board-green);
+  background-color: rgba(31, 93, 74, 0.1);
+  transform: rotate(2deg);
+}
+
+.stamp-rejected {
+  color: #9B2C2C;
+  border-color: #9B2C2C;
+  transform: rotate(-3deg);
+}
+
+.stamp-lg {
+  font-size: 1.3rem;
+  padding: 0.6rem 1.4rem;
+  border-width: 4px;
+}
+
+/* Stamp Thunk Animation */
+@keyframes stampThunk {
+  0% {
+    transform: scale(2.2) rotate(15deg);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(0.92) rotate(-3deg);
+    opacity: 0.95;
+  }
+  85% {
+    transform: scale(1.05) rotate(1deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(-1.5deg);
+    opacity: 1;
+  }
+}
+
+.stamp-animate {
+  animation: stampThunk 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 3. PAPER SLIPS & INDEX CARDS */
+.paper-card {
+  background-color: var(--color-card);
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+  position: relative;
+  transition: transform var(--transition-quick), box-shadow var(--transition-quick);
+}
+
+.paper-card:hover {
+  box-shadow: 4px 6px 0px rgba(26, 25, 22, 0.22);
+}
+
+/* Sticky Note Highlight */
+.sticky-note {
+  background-color: var(--color-highway-yellow-light);
+  border: 1px solid rgba(244, 196, 48, 0.8);
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.12);
+  padding: 1.25rem;
+  position: relative;
+  transform: rotate(-1deg);
+}
+
+/* Tape Strip effect */
+.tape-top {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0.8deg);
+  width: 90px;
+  height: 22px;
+  background-color: rgba(251, 247, 238, 0.65);
+  border-left: 1px dashed rgba(26, 25, 22, 0.2);
+  border-right: 1px dashed rgba(26, 25, 22, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+/* Push Pin effect */
+.push-pin {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  width: 24px;
+  height: 24px;
+  z-index: 10;
+  filter: drop-shadow(1px 3px 2px rgba(0,0,0,0.35));
+}
+
+/* Red margin line like an Indian school notebook */
+.exercise-margin {
+  border-left: 2px solid var(--color-margin-red);
+  padding-left: 1rem;
+}
+
+/* 4. FORM CONTROLS (Paper Slip & Ruled Fields) */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-pen-blue);
+  margin-bottom: 0.25rem;
+}
+
+.form-hint {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-ink-muted);
+  margin-top: 0.25rem;
+}
+
+.input-ruled {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-ink);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-ink);
+  padding: 0.5rem 0.25rem;
+  outline: none;
+  transition: border-color var(--transition-quick), background-color var(--transition-quick);
+}
+
+.input-ruled:focus {
+  border-bottom-color: var(--color-signal-red);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+textarea.input-ruled {
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  resize: vertical;
+}
+
+textarea.input-ruled:focus {
+  border-color: var(--color-signal-red);
+}
+
+select.input-ruled {
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem;
+  background-color: var(--color-paper-light);
+  cursor: pointer;
+}
+
+/* Priority Sticky Note Selector */
+.priority-chips {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.35rem;
+}
+
+.priority-chip {
+  flex: 1;
+  position: relative;
+}
+
+.priority-chip input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.priority-chip label {
+  display: block;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-quick);
+  box-shadow: 2px 2px 0 var(--color-ink);
+}
+
+.priority-chip.chip-low label {
+  background-color: #FFFFFF;
+}
+
+.priority-chip.chip-medium label {
+  background-color: var(--color-highway-yellow-light);
+}
+
+.priority-chip.chip-high label {
+  background-color: var(--color-signal-red-light);
+  color: var(--color-signal-red);
+}
+
+.priority-chip input[type="radio"]:checked + label {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--color-ink);
+  outline: 2px solid var(--color-ink);
+}
+
+.priority-chip.chip-high input[type="radio"]:checked + label {
+  background-color: var(--color-signal-red);
+  color: #FFFFFF;
+}
+
+/* Custom Checkbox (Physical tick switch) */
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  background-color: #FFFFFF;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: background-color var(--transition-quick);
+}
+
+.toggle-checkbox:checked {
+  background-color: var(--color-signal-red);
+}
+
+.toggle-checkbox:checked::after {
+  content: "✔";
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Validation Alerts */
+.alert {
+  padding: 1rem 1.25rem;
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
+
+.alert-danger {
+  background-color: var(--color-signal-red-light);
+  border-color: var(--color-signal-red);
+  color: #901B00;
+}
+
+.alert-success {
+  background-color: var(--color-board-green-light);
+  border-color: var(--color-board-green);
+  color: var(--color-board-green);
+}
+
+.inline-error {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-signal-red);
+  margin-top: 0.25rem;
+  display: block;
+}

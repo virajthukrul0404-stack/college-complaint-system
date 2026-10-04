@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notice Board • Connecting...</title>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      padding: 1.5rem;
+      background-color: var(--color-paper, #F2EADB);
+      font-family: var(--font-body, system-ui, sans-serif);
+      margin: 0;
+    }
+    .offline-slip {
+      background: var(--color-card, #FFFFFF);
+      border: 3px solid var(--color-ink, #1A1916);
+      box-shadow: 6px 6px 0 var(--color-ink, #1A1916);
+      padding: 2.5rem 2rem;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+    .offline-tape {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 140px;
+      height: 28px;
+      background: rgba(244, 196, 48, 0.85);
+      border: 1px dashed rgba(26, 25, 22, 0.4);
+    }
+    .offline-stamp {
+      display: inline-block;
+      border: 3px solid #D9534F;
+      color: #D9534F;
+      font-family: var(--font-mono, monospace);
+      font-weight: 800;
+      font-size: 1.25rem;
+      padding: 0.35rem 1.2rem;
+      letter-spacing: 0.15em;
+      transform: rotate(-2deg);
+      margin-bottom: 1.5rem;
+    }
+    .pulse-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #D9534F;
+      margin-right: 6px;
+      animation: blink 1.2s infinite ease-in-out;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-slip">
+    <div class="offline-tape"></div>
+    <div class="offline-stamp">
+      <span class="pulse-dot"></span>STAND BY
+    </div>
+    <h2 style="font-family: var(--font-display, serif); font-size: 1.6rem; margin: 0 0 0.75rem 0;">
+      The board is waking up.
+    </h2>
+    <p style="color: #666; margin-bottom: 1.25rem; line-height: 1.5; font-size: 0.95rem;">
+      On free cloud instances, the server takes about 50 seconds to boot from cold sleep. Give it a minute — we are reconnecting you now.
+    </p>
+    <div style="background: #FDF6E2; border: 1px dashed #1A1916; padding: 0.75rem 1rem; margin-bottom: 1.5rem; font-family: monospace; font-size: 0.85rem;">
+      ⏳ Auto-checking in <strong id="countdown">10</strong>s...
+    </div>
+    <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+      <button onclick="window.location.reload()" class="btn btn-primary" style="cursor: pointer; padding: 0.6rem 1.2rem; font-weight: bold; background: #2D6A4F; color: white; border: 2px solid #1A1916; box-shadow: 3px 3px 0 #1A1916;">
+        Check Connection Now ➔
+      </button>
+      <a href="student/complaint/new" class="btn btn-secondary" style="text-decoration: none; padding: 0.6rem 1.2rem; font-weight: bold; background: #FFF; color: #1A1916; border: 2px solid #1A1916; box-shadow: 3px 3px 0 #1A1916;">
+        Saved Drafts 📝
+      </a>
+    </div>
+  </div>
+
+  <script>
+    let secondsLeft = 10;
+    const countEl = document.getElementById('countdown');
+    const timer = setInterval(() => {
+      secondsLeft--;
+      if (countEl) countEl.textContent = secondsLeft;
+      if (secondsLeft <= 0) {
+        clearInterval(timer);
+        window.location.reload();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: college-complaint-system
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: STORAGE_MODE
+        value: db
+      - key: SEED_DEMO_DATA
+        value: "false"
+      - key: DB_POOL_SIZE
+        value: "5"
+      - key: DB_URL
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: ADMIN_INITIAL_PASSWORD
+        sync: false
+      - key: ALLOWED_EMAIL_DOMAIN
+        sync: false
