@@ -3,15 +3,15 @@
 FROM maven:3.9.9-eclipse-temurin-21-alpine AS builder
 WORKDIR /app
 
-# Cache Maven dependencies layer
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
+# Copy Maven settings with Google Cloud CDN mirror (prevents Maven Central 429 Too Many Requests errors)
+COPY settings.xml /root/.m2/settings.xml
 
-# Copy application source
+# Copy application source & POM
+COPY pom.xml .
 COPY src ./src
 
-# Compile and build exploded WAR archive
-RUN mvn clean compile war:exploded -DskipTests
+# Compile and build exploded WAR archive directly (avoids dependency:go-offline burst requests)
+RUN mvn clean compile war:exploded -DskipTests -B -s /root/.m2/settings.xml
 
 # Stage 2: Hardened, minimal JRE runtime image
 FROM eclipse-temurin:21-jre-alpine
